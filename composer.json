@@ -1,0 +1,12 @@
+{
+    "name": "youne/blogphp",
+    "authors": [
+        {
+            "name": "maria lalij",
+            "email": "marialalij@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.2"
+    }
+}
