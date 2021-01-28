@@ -1,4 +1,8 @@
-{
+{   "autoload": {
+        "psr-4": {
+            "App\\":"src/"
+        }
+    },
     "name": "youne/blogphp",
     "authors": [
         {
@@ -6,7 +10,10 @@
             "email": "marialalij@gmail.com"
         }
     ],
+   
     "require": {
-        "twig/twig": "^3.2"
+        "twig/twig": "^3.2",
+        "twbs/bootstrap": "^4.6",
+        "altorouter/altorouter": "1.2.0"
     }
 }
