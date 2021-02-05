@@ -1,5 +1,5 @@
 <?php 
- namespace Entity;
+ namespace Src\Entity;
 
  class user{
 

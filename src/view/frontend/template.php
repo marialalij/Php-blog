@@ -13,7 +13,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         
-        <link href="../../../style/boost/css/styles.css" rel="stylesheet"/>
+        <link href="../../../public/boost/css/styles.css" rel="stylesheet"/>
 
         
     </head>
@@ -40,27 +40,16 @@
             <div class="container d-flex h-100 align-items-center">
                 <div class="mx-auto text-center">
                     <h1 class="mx-auto my-0 text-uppercase">Maria Lalij</h1>
-                    <h2 class="text-white-50 mx-auto mt-2 mb-5">Développeuse PHP</h2>
-                    <a class="btn btn-primary js-scroll-trigger" href="#about">Get Started</a>
+                    <h2 class="text-white-50 mx-auto mt-2 mb-5"> A propos de moi </h2>
+                    <p class="text-white-50">
+                    “N'acceptez jamais la défaite, vous êtes peut-être à un pas de la réussite.”
+                    Passionnée depuis toujours par l'univers de la technologie, j'intégre openclassrooms pour une formation
+                     de développeuse php pour me monter en compétence </p>
+                    <a class="btn btn-primary js-scroll-trigger">télecharger mon cv</a>
                 </div>
             </div>
         </header>
         <!-- About-->
-        <section class="about-section text-center" id="about">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-8 mx-auto">
-                        <h2 class="text-white mb-4">Built with Bootstrap 4</h2>
-                        <p class="text-white-50">
-                            Grayscale is a free Bootstrap theme created by Start Bootstrap. It can be yours right now, simply download the template on
-                            <a href="https://startbootstrap.com/theme/grayscale/">the preview page</a>
-                            . The theme is open source, and you can use it for any purpose, personal or commercial.
-                        </p>
-                    </div>
-                </div>
-                <img class="img-fluid" src="assets/img/ipad.png" alt="" />
-            </div>
-        </section>
         <!-- Projects-->
         <section class="projects-section bg-light" id="projects">
             <div class="container">
@@ -76,7 +65,7 @@
                 </div>
                 <!-- Project One Row-->
                 <div class="row justify-content-center no-gutters mb-5 mb-lg-0">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-01.jpg" alt="" /></div>
+                    <div class="col-lg-6"></div>
                     <div class="col-lg-6">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -91,7 +80,7 @@
                 </div>
                 <!-- Project Two Row-->
                 <div class="row justify-content-center no-gutters">
-                    <div class="col-lg-6"><img class="img-fluid" src="assets/img/demo-image-02.jpg" alt="" /></div>
+                    <div class="col-lg-6"></div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
@@ -109,13 +98,16 @@
         <!-- Signup-->
         <section class="signup-section" id="signup">
             <div class="container">
-                <div class="row">
+                <div class="row"> 
                     <div class="col-md-10 col-lg-8 mx-auto text-center">
                         <i class="far fa-paper-plane fa-2x mb-2 text-white"></i>
-                        <h2 class="text-white mb-5">Subscribe to receive updates!</h2>
-                        <form class="form-inline d-flex">
-                            <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" placeholder="Enter email address..." />
-                            <button class="btn btn-primary mx-auto" type="submit">Subscribe</button>
+                        <h2 class="text-white mb-5">Contactez-nous</h2>
+                        <form   action="mgcontact.php" method="post" class="flex-column" >
+                            <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" name="UName" placeholder="votre Nom" /><br>
+                            <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" name="Email" placeholder="votre adresse email" /><br>
+                            <input class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email" name="Subject" placeholder="objet" /><br>
+                            <textarea class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" type="email"  name="msg" placeholder="Message" > </textarea><br>
+                            <button class="btn btn-primary mx-auto" name="btn-send" type="submit">envoyer</button>
                         </form>
                     </div>
                 </div>
