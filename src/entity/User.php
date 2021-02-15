@@ -1,6 +1,4 @@
 <?php 
- namespace Src\Entity;
-
  class user{
 
      private $pseudo;

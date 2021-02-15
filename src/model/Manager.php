@@ -1,29 +1,46 @@
 <?php
+namespace App\src\model;
 
-namespace Src\Model;
+use PDO;
+use Exception;
 
-use Src\Entity\Post;
+abstract class Manager
+{
+    private $connection;
 
-class Database{
-  
-    // specify your own database credentials
-    private $host = "localhost";
-    private $db_name = "blogphp";
-    private $username = "root";
-    private $password = "";
-    public $conn;
-  
-    // get the database connection
-    public function getConnection(){
-  
-        $this->conn = null;
-  
-        try{
-            $this->conn = new PDO("mysql:host=" . $this->host . ";dbname=" . $this->db_name, $this->username, $this->password);
-        }catch(PDOException $exception){
-            echo "Connection error: " . $exception->getMessage();
+    private function checkConnection()
+    {
+        if($this->connection === null) {
+            return $this->getConnection();
         }
-  
-        return $this->conn;
+        return $this->connection;
+    }
+
+    
+    private function getConnection()
+    {
+       
+        try{
+            $this->connection = new PDO(DB_HOST, DB_USER, DB_PASS);
+            $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $this->connection;
+        }
+        catch(Exception $errorConnection)
+        {
+            die ('Erreur de connection :'.$errorConnection->getMessage());
+        }
+
+    }
+
+    protected function createQuery($sql, $parameters = null)
+    {
+        if($parameters)
+        {
+            $result = $this->checkConnection()->prepare($sql);
+            $result->execute($parameters);
+            return $result;
+        }
+        $result = $this->checkConnection()->query($sql);
+        return $result;
     }
 }
