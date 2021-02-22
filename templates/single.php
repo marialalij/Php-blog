@@ -1,7 +1,4 @@
-<?php $this->title = "Article"; ?>
-
-<h1>Mon blog</h1>
-<p>En construction</p>
+<?php $this->title = "Article" ;?>
 <div>
         <h2><?= htmlspecialchars($article->getTitle());?></h2>
         <p><?= htmlspecialchars($article->getChapo());?></p>
@@ -17,7 +14,6 @@
 <br>
 <a href="../public/index.php">Retour à l'accueil</a>
 <div id="comments" class="text-left" style="margin-left: 50px">
-    <h3>Ajouter un commentaire</h3>
     <?php include('form_comment.php'); ?>
     <h3>Commentaires</h3>
     <?php
@@ -31,5 +27,7 @@
     }
     
      ?>
+       <p><a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getIdComment(); ?>">Supprimer le commentaire</a></p>
+        <br>
 
 </div>

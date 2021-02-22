@@ -24,6 +24,8 @@ class Router
     public function run()
     {
         $route = $this->request->getGet()->get('route');
+        $articleId = $this->request->getGet()->get('articleId');
+        $post = $this->request->getPost();
         try{
             if(isset($route))
             {
@@ -33,32 +35,50 @@ class Router
                 elseif($route === 'about'){
                     $this->frontController->about();
                 }
-                elseif($route === 'contact'){
-                    $this->frontController->contact();
+                elseif($route === 'admin'){
+                    $this->frontController->admin();
                 }
                 elseif($route === 'addArticle'){
-                    $this->backController->addArticle($this->request->getPost());
+                    $this->backController->addArticle($post);
                 }
                 elseif($route === 'editArticle'){
-                    $this->backController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
+                    $this->backController->editArticle($post, $articleId);
                 }
                 elseif($route === 'deleteArticle'){
-                    $this->backController->deleteArticle($this->request->getGet()->get('articleId'));
+                    $this->backController->deleteArticle($articleId);
                 }
                 elseif($route === 'addComment'){
-                    $this->frontController->addComment($this->request->getPost(), $this->request->getGet()->get('articleId'));
+                    $this->frontController->addComment($post, $articleId);
                 }
                 elseif($route === 'deleteComment'){
                     $this->backController->deleteComment($this->request->getGet()->get('commentId'));
                 }
                 elseif($route === 'register'){
-                    $this->frontController->register($this->request->getPost());
+                      $this->frontController->register($post);
                 }
+                elseif($route === 'contact'){
+                    $this->frontController->contact($post);
+              }
                 elseif($route === 'login'){
-                    $this->frontController->login($this->request->getPost());
+                    $this->frontController->login($post);
+                }
+                elseif($route === 'profile'){
+                    $this->backController->profile();
+                }
+                elseif($route === 'updatePassword'){
+                    $this->backController->updatePassword($this->request->getPost());
                 }
                 elseif($route === 'logout'){
                     $this->backController->logout();
+                }
+                elseif($route === 'deleteAccount'){
+                    $this->backController->deleteAccount();
+                }
+                elseif($route === 'deleteUser'){
+                    $this->backController->deleteUser($this->request->getGet()->get('userId'));
+                }
+                elseif($route === 'administration'){
+                    $this->backController->administration();
                 }
                 else{
                     $this->errorController->errorNotFound();

@@ -28,11 +28,11 @@ class ArticleValidation extends Validation
             $error = $this->checkTitle($name, $value);
             $this->addError($name, $error);
         }
-          if($name === 'chapo') {
+          elseif($name === 'chapo') {
             $error = $this->checkChapo($name, $value);
             $this->addError($name, $error);
         }
-         if($name === 'content') {
+         elseif($name === 'content') {
             $error = $this->checkContent($name, $value);
             $this->addError($name, $error);
         }

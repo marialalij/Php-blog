@@ -1,6 +1,7 @@
 <?php 
- class user{
-
+namespace App\src\entity;
+ class User{
+    private $idUser;
      private $pseudo;
      private $email;
      private $password;
@@ -12,6 +13,13 @@
      private $role;
 
    //setters
+ 
+
+   public function setIdUser($idUser)
+   {
+
+       $this->idUser = $idUser;
+   }
 
      public function setPseudo($pseudo)
      {
@@ -61,6 +69,11 @@
 
 
     //getters
+
+    public function getIdUser()
+	{
+		return $this->idUser;
+	}
 
     public function getPseudo()
 	{

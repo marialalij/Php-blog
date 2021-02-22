@@ -9,8 +9,7 @@
     "require": {
         "twig/twig": "^3.2",
         "twbs/bootstrap": "^4.6",
-        "altorouter/altorouter": "1.2.0",
-        "phpmailer/phpmailer": "^6.2"
+        "filp/whoops": "^2.9"
     },  
 
     "autoload": {
@@ -19,7 +18,8 @@
           "App\\src\\": "src/",
           "App\\src\\controller\\": "src/controller/",
           "App\\src\\constraint\\": "src/constraint/",
-          "App\\src\\model\\": "src/model/"
+          "App\\src\\model\\": "src/model/",
+          "App\\src\\view\\": "src/view/"
 
         }
       }

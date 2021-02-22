@@ -29,7 +29,7 @@ class Comment
 
 	public function getIdComment()
 	{
-		return $this->commentDate;
+		return $this->idComment;
 	}
 
 	public function getContent()

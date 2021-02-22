@@ -28,20 +28,20 @@ class UserValidation extends Validation
             $error = $this->checkPseudo($name, $value);
             $this->addError($name, $error);
         }
-        if ($name === 'email') {
+        elseif($name === 'email') {
             $error = $this->checkEmail($name, $value);
             $this->addError($name, $error);
         }
 
-        if ($name === 'first_name') {
+        elseif($name === 'first_name') {
             $error = $this->checkFirstName($name, $value);
             $this->addError($name, $error);
         }
-        if ($name === 'last_name') {
+        elseif($name === 'last_name') {
             $error = $this->checkLastName($name, $value);
             $this->addError($name, $error);
         }
-        if ($name === 'password') {
+        elseif($name === 'password') {
             $error = $this->checkPassword($name, $value);
             $this->addError($name, $error);
         }
@@ -61,10 +61,10 @@ class UserValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('pseudo', $value);
         }
-        if($this->constraint->minLength($name, $value, 2)) {
+        elseif($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('pseudo', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 255)) {
+        elseif($this->constraint->maxLength($name, $value, 255)) {
             return $this->constraint->maxLength('pseudo', $value, 255);
         }
     }
@@ -77,10 +77,10 @@ class UserValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('email', $value);
         }
-        if($this->constraint->minLength($name, $value, 10)) {
+        elseif($this->constraint->minLength($name, $value, 10)) {
             return $this->constraint->minLength('email', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 255)) {
+        elseif($this->constraint->maxLength($name, $value, 255)) {
             return $this->constraint->maxLength('email', $value, 255);
         }
     }
@@ -91,10 +91,10 @@ class UserValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('first_name', $value);
         }
-        if($this->constraint->minLength($name, $value, 10)) {
+        elseif($this->constraint->minLength($name, $value, 10)) {
             return $this->constraint->minLength('first_name', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 255)) {
+        elseif($this->constraint->maxLength($name, $value, 255)) {
             return $this->constraint->maxLength('first_name', $value, 255);
         }
     }
@@ -105,10 +105,10 @@ class UserValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('last_name', $value);
         }
-        if($this->constraint->minLength($name, $value, 2)) {
+        elseif($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('last_name', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 2)) {
+        elseif($this->constraint->maxLength($name, $value, 2)) {
             return $this->constraint->maxLength('last_name', $value, 255);
         }
     }
@@ -121,10 +121,10 @@ class UserValidation extends Validation
         if($this->constraint->notBlank($name, $value)) {
             return $this->constraint->notBlank('password', $value);
         }
-        if($this->constraint->minLength($name, $value, 2)) {
+        elseif($this->constraint->minLength($name, $value, 2)) {
             return $this->constraint->minLength('password', $value, 2);
         }
-        if($this->constraint->maxLength($name, $value, 255)) {
+        elseif($this->constraint->maxLength($name, $value, 255)) {
             return $this->constraint->maxLength('password', $value, 255);
         }
     }

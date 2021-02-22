@@ -10,6 +10,7 @@
      private $createDate;
      private $updateDate;
      private $mainImage;
+     private $author;
    //setters
 
       public function setIdArticle($idArticle)
@@ -47,6 +48,11 @@
     public function setMainImage($mainImage)
 	{
 		$this->mainImage = $mainImage;
+    }
+
+    public function setAuthor($author)
+    {
+        $this->author = $author;
     }
 
     //getters
@@ -88,5 +94,8 @@
 		return $this->mainImage;
 	}
 
-	
+    public function getAuthor()
+	{
+		return $this->author;
+	}
  }

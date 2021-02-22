@@ -19,7 +19,7 @@ class View
     {
         $this->file = '../templates/'.$template.'.php';
         $content  = $this->renderFile($this->file, $data);
-        $view = $this->renderFile('../templates/base.php', [
+        $view = $this->renderFile('../templates/frontend_template.php', [
             'title' => $this->title,
             'content' => $content,
             'session' => $this->session

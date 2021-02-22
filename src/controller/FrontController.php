@@ -23,27 +23,37 @@ class FrontController extends Controller
             'comments' => $comments
         ]);
     }
-
-
     public function addComment(Parameter $post, $articleId)
     {
-        if($post->get('submit')) {
+        $article = $this->articleManager->getArticle($articleId);
+        $comments = $this->commentManager->getComments($articleId);
+
+        //Si formulaire POST soumis, on insère le commentaire si les données sont valides
+        if ($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
-            if(!$errors) {
+            if (!$errors) {
                 $this->commentManager->addComment($post, $articleId);
-                $this->session->set('add_comment', 'Le nouveau commentaire a bien été ajouté');
-                header('Location: ../public/index.php');
+                $this->session->set('add_comment', 'Le commentaire à bien été ajouté');
+                header('Location: ../public/index.php?route=article&articleId=' . $articleId);
+            } else {
+                $this->view->render('single', [
+                    'article' => $article,
+                    'comments' => $comments,
+                    'errors' => $errors,
+                    'post' => $post
+                ]);
             }
-            $article = $this->articleManager->getArticle($articleId);
-            $comments = $this->commentManager->getComments($articleId);
-            return $this->view->render('single', [
-                'article' => $article,
-                'comments' => $comments,
-                'post' => $post,
-                'errors' => $errors
-            ]);
+        } else {
+            //Si aucun formulaire soumis, redirection vers home
+            header('Location: ../public/index.php');
         }
     }
+
+
+
+
+
+
 
     public function register(Parameter $post)
     {
@@ -74,6 +84,7 @@ class FrontController extends Controller
             if($result && $result['isPasswordValid']) {
                 $this->session->set('login', 'Content de vous revoir');
                 $this->session->set('iduser', $result['result']['iduser']);
+                $this->session->set('role', $result['result']['role']);
                 $this->session->set('pseudo', $post->get('pseudo'));
                 header('Location: ../public/index.php');
             }
@@ -93,9 +104,15 @@ class FrontController extends Controller
         return $this->view->render('about_me');
     }
 
-
+    
     public function contact()
     {
         return $this->view->render('contact_me');
+    }
+
+    public function admin()
+    {
+        return $this->view->render('backend_template');
+    
     }
 }

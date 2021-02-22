@@ -1,7 +1,5 @@
 <?php
 namespace App\src\model;
-
-
 use App\config\Parameter;
 use App\src\entity\Comment;
 
@@ -43,4 +41,20 @@ private function buildObject($row)
         $sql = 'DELETE FROM comment WHERE idcomment = ?';
         $this->createQuery($sql, [$commentId]);
     }
+
+
+    public function getAllComments()
+    {
+        $sql = 'SELECT idcomment,  content, comment_date FROM comment ORDER BY comment_date DESC';
+        $result = $this->createQuery($sql);
+        $comments = [];
+        foreach ($result as $row) {
+            $commentId = $row['idcomment'];
+            $comments[$commentId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $comments;
+    
+}
+
 }

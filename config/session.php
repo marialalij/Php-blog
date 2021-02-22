@@ -38,6 +38,11 @@ class Session
         session_start();
     }
     
+    
+    public function removeAll()
+    {
+        $_SESSION = array();
+    }
 
     public function remove($name)
     {
@@ -47,6 +52,15 @@ class Session
     public function stop()
     {
         session_destroy();
+    }
+
+    public function getUserInfo($name)
+    {
+        if (isset($_SESSION['user'])) {
+            if (isset($_SESSION['user'][$name])) {
+                return $_SESSION['user'][$name];
+            }
+        }
     }
 
 }

@@ -1,8 +1,6 @@
 <?php
 
 namespace App\src\controller;
-
-
 use App\src\model\ArticleManager;
 use App\src\constraint\Validation;
 use App\src\model\CommentManager;
