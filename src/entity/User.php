@@ -1,7 +1,7 @@
 <?php 
 namespace App\src\entity;
  class User{
-    private $idUser;
+     private $idUser;
      private $pseudo;
      private $email;
      private $password;
@@ -11,6 +11,7 @@ namespace App\src\entity;
      private $birthDate;
      private $image;
      private $role;
+     private $status;
 
    //setters
  
@@ -64,6 +65,16 @@ namespace App\src\entity;
     public function setRole($role)
 	{
 		$this->role = $role;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
     
 

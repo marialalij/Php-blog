@@ -7,6 +7,7 @@ class Comment
     private $idComment;
     private $content;
 	private $commentDate;
+	private $status;
 
   	// SETTERS //
 
@@ -24,7 +25,11 @@ class Comment
 	{
 		$this->commentDate = $commentDate;
 	}
-
+	public function setStatus($status)
+    {
+        $this->status = $status;
+    
+	}
   	// GETTERS //
 
 	public function getIdComment()
@@ -42,5 +47,9 @@ class Comment
 		return $this->commentDate;
 	}
 
+	public function getStatus()
+    {
+        return $this->status;
+    }
 
 }

@@ -11,6 +11,7 @@
      private $updateDate;
      private $mainImage;
      private $author;
+     private $status;
    //setters
 
       public function setIdArticle($idArticle)
@@ -53,6 +54,11 @@
     public function setAuthor($author)
     {
         $this->author = $author;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
     }
 
     //getters
@@ -98,4 +104,9 @@
 	{
 		return $this->author;
 	}
+
+    public function getStatus()
+    {
+        return $this->status;
+    }
  }
