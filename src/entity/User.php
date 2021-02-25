@@ -9,7 +9,6 @@ namespace App\src\entity;
      private $lastName;
      private $mobile;
      private $birthDate;
-     private $image;
      private $role;
      private $status;
 
@@ -58,10 +57,6 @@ namespace App\src\entity;
 		$this->birthDate = $birthDate;
 	}
 
-    public function setImage($image)
-	{
-		$this->image = $image;
-    }
     public function setRole($role)
 	{
 		$this->role = $role;
@@ -119,11 +114,6 @@ namespace App\src\entity;
     public function getBirthDate()
 	{
 		return $this->birthDate;
-	}
-
-	public function getImage()
-	{
-		return $this->image;
 	}
 
 	public function getRole()
