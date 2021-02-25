@@ -14,7 +14,7 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-       <img class="img-fluid mb-3-thumbnail imgcv"  src="../public/image/maria.jpeg" alt="">
+       <img class="img-fluid mb-3-thumbnail imgcv imgprofil"  src="../public/image/maria.jpeg" alt="">
   
         <p>Je m'appelle Maria Lalij J'ai 23ans </p>
         <p>Diplômée comme technicienne spécialisée en développement informatique (BAC+2) j'ai pu approfondir mes compétences grâce à des formations professionnelles et des stages </p>

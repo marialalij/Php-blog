@@ -119,12 +119,15 @@ class BackController extends Controller
     }
 
 
+ 
     public function logout()
     {
-        $this->session->stop();
-        $this->session->start();
-        $this->session->set('À bientôt');
-        header('Location: ../public/index.php');
+        if ($this->checkLoggedIn()) {
+            $this->session->destroy();
+            $this->session->start();
+            $this->session->set('logout', 'Déconnexion réussie');
+            header('Location: ../public/index.php');
+        }
     }
 
     public function profile()

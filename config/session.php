@@ -11,7 +11,7 @@ class Session
         $this->session = $session;
     }
 
-    public function set($name, $value)
+    public function set(string $name, $value)
     {
         $_SESSION[$name] = $value;
     }
@@ -38,11 +38,6 @@ class Session
         session_start();
     }
     
-    
-    public function removeAll()
-    {
-        $_SESSION = array();
-    }
 
     public function remove($name)
     {
@@ -50,6 +45,11 @@ class Session
     }
 
     public function stop()
+    {
+        session_destroy();
+    }
+    
+    public function destroy()
     {
         session_destroy();
     }

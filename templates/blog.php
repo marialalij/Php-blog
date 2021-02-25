@@ -3,10 +3,10 @@
 <?= $this->session->show('edit_article'); ?>
 <?= $this->session->show('delete_article'); ?>
 <?= $this->session->show('add_comment'); ?>
-<?= $this->session->show('flag_comment'); ?>
 <?= $this->session->show('delete_comment'); ?>
 <?= $this->session->show('register'); ?>
 <?= $this->session->show('login'); ?>
+<?= $this->session->show('logout'); ?>
 
       <?php
 
@@ -22,6 +22,7 @@
          <?= htmlspecialchars($article->getTitle());?></a></h2>
          <h3 class="post-subtitle"><?= htmlspecialchars($article->getChapo());?></h3>
          <p><?= htmlspecialchars($article->getContent());?></p>
+         <p><?= htmlspecialchars($article->getAuthor());?></p>
          <p class="post-meta"><?= htmlspecialchars($article->getUpdateDate());?></p>
 
         </div>

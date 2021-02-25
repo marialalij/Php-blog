@@ -4,6 +4,7 @@
         <p><?= htmlspecialchars($article->getChapo());?></p>
         <p><?= htmlspecialchars($article->getContent());?></p>
         <p><?= htmlspecialchars($article->getCreateDate());?></p>
+        <p><?= htmlspecialchars($article->getAuthor());?></p>
         <p><?= htmlspecialchars($article->getUpdateDate());?></p>
     </div>
 <br>
