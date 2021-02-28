@@ -2,6 +2,7 @@
 namespace App\src\model;
 use App\config\Parameter;
 use App\src\entity\Article;
+use App\src\model\UserManager;
 
 
 class ArticleManager extends Manager
@@ -42,22 +43,22 @@ class ArticleManager extends Manager
     }
 
 
-    
-    public function addArticle(Parameter $post, $userId)
+    public function addArticle(Parameter $post)
     {
-        $sql = 'INSERT INTO article (title, chapo,  content, update_date, user_iduser) VALUES (?, ?, ?, NOW(), ?)';
-        $this->createQuery($sql, [$post->get('title'), $post->get('chapo'), $post->get('content'), $userId]);
+        $sql = 'INSERT INTO article (title, chapo, content, update_date, user_iduser)
+         VALUES (?, ?, ?, NOW(),?)';
+        $this->createQuery($sql, [$post->get('title'), $post->get('chapo'), 
+        $post->get('content'), $_SESSION['iduser'] ]);
     }
 
 
-    public function editArticle(Parameter $post, $articleId, $userId)
+    public function editArticle(Parameter $post, $articleId)
     {
-        $sql = 'UPDATE article SET title=:title, chapo=:chapo, content=:content, user_iduser=:user_iduser WHERE idarticle=:articleId';
+        $sql = 'UPDATE article SET title=:title, chapo=:chapo, content=:content WHERE idarticle=:articleId';
         $this->createQuery($sql, [
             'title' => $post->get('title'),
             'chapo' => $post->get('chapo'),
             'content' => $post->get('content'),
-            'user_iduser' => $userId,
             'articleId' => $articleId
         ]);
     }
