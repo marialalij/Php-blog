@@ -32,6 +32,7 @@ use App\src\model\UserManager;
 <link href="../../../public/startbootstrap/css/clean-blog.min.css" rel="stylesheet">
 <link href="../../../public/style/style.css" rel ="stylesheet">
 
+
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
@@ -45,10 +46,10 @@ use App\src\model\UserManager;
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link"  href="../../../public/index.php">Blog</a>
+            <a class="nav-link"  href="../../../public/index.php">a propos de moi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../../../public/index.php?route=about">a Propos de moi</a>
+            <a class="nav-link" href="../../../public/index.php?route=about">blog</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="../../../public/index.php?route=contact" href="contact.html">Contactez-Moi</a>
@@ -56,21 +57,44 @@ use App\src\model\UserManager;
           <?php 
    if ($this->session->get('pseudo')) {
           ?>
-          <li class="nav-item">
-            <a class="nav-link" href="../../../public/index.php?route=logout">deconnexion</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="../../../public/index.php?route=profile">Profil</a>
-            </li>
-            <?php if($this->session->get('role') === 'admin') { ?>
-              <li class="nav-item">
-            <a  class="nav-link" href="../../../public/index.php?route=administration">Administration</a>
-            </li>
-         <?php } ?>
-            
-            <li class="nav-item">
-            <a  class="nav-link" href="../../../public/index.php?route=addArticle">Nouvel article</a>
-            </li>
+
+<li class="nav-item dropdown no-arrow nav-avatar">
+   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+   Bonjour, <?= htmlspecialchars($session->get('pseudo'), ENT_QUOTES); ?>
+   </a>
+                              
+   <!-- Dropdown - User Information -->
+    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+    <a class="dropdown-item" href="../../../public/index.php?route=profile"<?= htmlspecialchars($session->get('iduser'), ENT_QUOTES); ?>>
+   <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+     Mon profil
+     </a>
+
+     <div class="dropdown-divider"></div>
+     <a class="dropdown-item" href="../../../public/index.php?route=logout"s>
+     <i class="fas fa-sign-out-alt text-gray-400"></i>
+       deconnexion
+      </a>
+  
+      <div class="dropdown-divider"></div>
+     <a class="dropdown-item" href="../../../public/index.php?route=addArticle">
+     <i class="fas fa-plus-circle text-gray-400"></i>
+       nouvel article
+      </a>
+   
+     <?php if($this->session->get('role') === 'admin') { ?>
+
+      
+      <div class="dropdown-divider"></div>
+     <a class="dropdown-item" href="../../../public/index.php?route=administration">
+     <i class="fas fa-users-cog text-gray-400"></i>
+   administartion
+      </a>    
+         <?php
+         }
+       ?>
+              </div>
+             </li>
           <?php
 } else {
     ?>
@@ -144,10 +168,13 @@ use App\src\model\UserManager;
 
   <!-- Bootstrap core JavaScript -->
   <script src="../../../public/startbootstrap/vendor/jquery/jquery.min.js"></script>
-  <script src="../../../public/startbootstrapvendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../../../public/startbootstrap/vendor/jquery/jquery.min.slim.js"></script>
+  <script src="../../../public/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
 
   <!-- Custom scripts for this template -->
   <script src="../../../public/startbootstrap/js/clean-blog.min.js"></script>
+
 
 </body>
 
