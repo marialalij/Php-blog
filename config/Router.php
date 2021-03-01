@@ -57,7 +57,7 @@ class Router
                       $this->frontController->register($post);
                 }
                 elseif($route === 'contact'){
-                    $this->frontController->contact($post);
+                    $this->frontController->contact();
               }
                 elseif($route === 'login'){
                     $this->frontController->login($post);

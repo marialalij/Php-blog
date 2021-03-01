@@ -64,12 +64,11 @@ class BackController extends Controller
                 }
             } else {
                 //Si aucune données POST, création d'un article
-                $this->view->render('add_article',
-                ['session' => $this->request->getSession()]);
-                var_dump();
+                $this->view->render('add_article');
             }
         }
     }
+
 
     public function editArticle(Parameter $post, $articleId)
     {
@@ -115,7 +114,7 @@ class BackController extends Controller
     {
         $this->commentManager->deleteComment($commentId);
         $this->session->set('delete_comment', 'Le commentaire a bien été supprimé');
-        header('Location: ../public/index.php');
+        header('Location: ../public/index.php?route=administration');
     }
 
 

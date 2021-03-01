@@ -8,6 +8,11 @@ class FrontController extends Controller
 
     public function home()
     {
+        return $this->view->render('about_me');
+    }
+
+    public function about()
+    {
         $articles = $this->articleManager->getArticles();
         return $this->view->render('blog', [
             'articles' => $articles
@@ -98,21 +103,14 @@ class FrontController extends Controller
         return $this->view->render('login');
     }
 
-
-    public function about()
-    {
-        return $this->view->render('about_me');
-    }
-
     
     public function contact()
     {
         return $this->view->render('contact_me');
     }
 
-    public function admin()
-    {
-        return $this->view->render('backend_template');
     
-    }
 }
+
+   
+

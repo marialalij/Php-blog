@@ -9,6 +9,8 @@ use App\src\entity\User;
 class UserManager extends Manager
 
 {
+
+    
     private function buildObject($row)
     {
         $user = new User();
@@ -17,6 +19,7 @@ class UserManager extends Manager
         $user->setRole($row['role']);
         return $user;
     }
+  
   
     public function getUsers()
     {
@@ -48,17 +51,18 @@ class UserManager extends Manager
             return '<p>Le pseudo existe déjà</p>';
         }
     }
-
-
+   
+    
     public function login(Parameter $post)
     {
         $sql = 'SELECT user.iduser, user.role_idrole, user.password, role.role FROM user INNER JOIN role ON role.idrole = user.role_idrole WHERE pseudo = ?';
         $data = $this->createQuery($sql, [$post->get('pseudo')]);
         $result = $data->fetch();
         $isPasswordValid = password_verify($post->get('password'), $result['password']);
+        $_SESSION['iduser'] = $result['iduser'] ;
         return [
-            'result' => $result,
-            'isPasswordValid' => $isPasswordValid
+           'result' => $result,    
+           'isPasswordValid' => $isPasswordValid
         ];
     }
 
