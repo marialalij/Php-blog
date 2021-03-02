@@ -17,12 +17,26 @@ class ArticleManager extends Manager
         $article->setContent($row['content']);
         $article->setAuthor($row['pseudo']);
         $article->setUpdateDate($row['update_date']);
+        $article->setStatus($row['status']);
         return $article;
     }
 
     public function getArticles()
     {
-        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date FROM article INNER JOIN user ON article.user_iduser = user.iduser ORDER BY article.idarticle DESC';
+        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date, article.status FROM article INNER JOIN user ON article.user_iduser = user.iduser and article.status =1  ORDER BY article.idarticle DESC';
+        $result = $this->createQuery($sql);
+        $articles = [];
+        foreach ($result as $row){
+            $articleId = $row['idarticle'];
+            $articles[$articleId] = $this->buildObject($row);
+        }
+        $result->closeCursor();
+        return $articles;
+    }
+
+    public function getalladministration()
+    {
+        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date, article.status FROM article INNER JOIN user ON article.user_iduser = user.iduser ORDER BY article.idarticle DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -35,7 +49,7 @@ class ArticleManager extends Manager
 
     public function getArticle($articleId)
     {
-        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date FROM article INNER JOIN user ON article.user_iduser = user.iduser WHERE article.idarticle = ?';
+        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date, article.status  FROM article INNER JOIN user ON article.user_iduser = user.iduser WHERE article.idarticle = ?';
         $result = $this->createQuery($sql,[$articleId]);
         $article = $result->fetch();
         $result->closeCursor();
@@ -45,10 +59,27 @@ class ArticleManager extends Manager
 
     public function addArticle(Parameter $post)
     {
-        $sql = 'INSERT INTO article (title, chapo, content, update_date, user_iduser)
-         VALUES (?, ?, ?, NOW(),?)';
+        $sql = 'INSERT INTO article (title, chapo, content, update_date, author, user_iduser, article.status)
+         VALUES (?, ?, ?, NOW(),?,?,1)';
         $this->createQuery($sql, [$post->get('title'), $post->get('chapo'), 
-        $post->get('content'), $_SESSION['iduser'] ]);
+        $post->get('content'), $post->get('author'), $_SESSION['iduser'] ]);
+    }
+
+
+  
+    public function publishArticle($articleId)
+    {
+       $sql = 'UPDATE article SET article.status = 1 WHERE idarticle = ?';
+       $this->createQuery($sql,[$articleId]);
+   
+    }
+
+    public function pauseArticle($articleId)
+    {
+     $sql = 'UPDATE article SET article.status = 2 WHERE idarticle = ?';
+    $this->createQuery($sql, [$articleId]);
+
+     
     }
 
 
