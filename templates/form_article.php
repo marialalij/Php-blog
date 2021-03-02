@@ -4,7 +4,7 @@ $route = isset($post) && $post->get('idarticle') ? 'editArticle&articleId=' . $p
 $title = isset($post) ? htmlspecialchars($post->get('title')) : '';
 $chapo = isset($post) ? htmlspecialchars($post->get('chapo')) : '';
 $content = isset($post) ? htmlspecialchars($post->get('content')) : '';
-$author = isset($post) ? htmlspecialchars($post->get('content')) : '';
+$author = isset($post) ? htmlspecialchars($post->get('author')) : '';
 $submit = $route === 'addArticle' ? 'Envoyer' : 'Mettre à jour';
 ?>
 <div class="container">
@@ -38,6 +38,18 @@ $submit = $route === 'addArticle' ? 'Envoyer' : 'Mettre à jour';
           <?= isset($errors['content']) ? $errors['content'] : ''; ?>
           </div>
           </div>
+
+          <div class="control-group">
+          <div class="form-group floating-label-form-group controls">
+       
+       <label for="author">author</label><br>
+       <input type="text" id="author" name="author" class="form-control" placeholder="author"  required data-validation-required-message="Please enter your chapo."
+       value="<?= isset($post) ? htmlspecialchars($post->get('author')): ''; ?>"><br>
+       <?= isset($errors['author']) ? $errors['author'] : ''; ?>
+       <p class="help-block text-danger"></p>
+       </div>   
+       </div>
+       <br>
          <input type="submit" value="<?= $submit; ?>" id="submit" class="btn btn-primary" name="submit">
         </form>
        </div>  

@@ -18,6 +18,7 @@
 <?= $this->session->show('delete_article'); ?>
 <?= $this->session->show('delete_comment'); ?>
 <?= $this->session->show('delete_user'); ?>
+<?= $this->session->show('message'); ?>
 
 <div class="collapse show" id="recentPostsCard">
                 <div class="card-body">
@@ -30,7 +31,9 @@
                             <th scope="col">Contenu</th>
                             <th scope="col">Auteur</th>
                             <th scope="col" class="responsive-table-custom">Date de création</th>
-                            <th scope="col">Action</th>
+                            <th scope="col">status</th>
+                            <th scope="col">actions</th>
+                            <th scope="col">changer status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -44,6 +47,7 @@
                                 <td><?= substr(htmlspecialchars($article->getContent(), ENT_QUOTES), 0, 50); ?>...</td>
                                 <td><?= htmlspecialchars($article->getAuthor(), ENT_QUOTES); ?></td>
                                 <td class="responsive-table-custom"><?= $article->getUpdateDate(); ?></td>
+                                <td><?= htmlspecialchars($article->getStatus(), ENT_QUOTES); ?></td>
                                 <td>
                                 
                            
@@ -54,8 +58,27 @@
                                         <i class="fas fa-trash-alt"></i>
             
                                     </a>
-                                  
-                                </td>
+                                 </td>
+                                 <td><?php
+                      if ($article->getstatus() == 1)
+                      {
+                        ?>
+                    <div>
+                      <a href="../public/index.php?route=pauseArticle&articleId=<?= $article->getIdArticle() ?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
+                    </div>
+                    <?php } ?>
+                    <?php
+                      if ($article->getstatus() == 2)
+                      {
+                        ?>
+                        <div>
+                          <a href="../public/index.php?route=publishArticle&articleId=<?= $article->getIdArticle() ?>"> <input type="button" class="btn btn-primary btn-lg" value="Publier"> </a>
+                        </div>
+                      <?php } ?>
+                </td> 
+
+               
+                       
                            
                         </tbody>
                         <?php
@@ -117,7 +140,9 @@
                             <th scope="col" class="responsive-table-custom">Id</th>
                             <th scope="col">message</th>
                             <th scope="col" class="responsive-table-custom">Date de création</th>
+                            <th scope="col">status</th>
                             <th scope="col">Action</th>
+                            <th scope="col">changer le status</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -125,15 +150,35 @@
     foreach ($comments as $comment)
     {
         ?>
-       <th scope="row"  class="responsive-table-custom"><?= htmlspecialchars($comment->getIdComment(), ENT_QUOTES); ?></th>
+       <th scope="row"class="responsive-table-custom"><?= htmlspecialchars($comment->getIdComment(), ENT_QUOTES); ?></th>
         <td><?= htmlspecialchars($comment->getContent(), ENT_QUOTES); ?></td>
         <td><?= htmlspecialchars($comment->getCommentDate(), ENT_QUOTES); ?></td>
+        <td><?= htmlspecialchars($comment->getStatus(), ENT_QUOTES); ?></td>
         <td>
             
                 
                 <a href="../public/index.php?route=deleteComment&commentId=<?= $comment->getIdComment(); ?>" class="btn btn-outline-dark btn-sm" title="Supprimer">
                              <i class="fas fa-trash-alt"></i>
          </td>
+
+         <td>
+         <?php
+                      if ($comment->getstatus() == 1)
+                      {
+                        ?>
+                    <div>
+                      <a href="../public/index.php?route=pauseComment&commentId=<?= $comment->getIdComment() ;?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
+                    </div>
+                    <?php } ?>
+                    <?php
+                      if ($comment->getstatus() == 2)
+                      {
+                        ?>
+                        <div>
+                          <a href="../public/index.php?route=publishComment&commentId=<?= $comment->getIdComment() ;?>"> <input type="button" class="btn btn-primary btn-lg" value="Publier"> </a>
+                        </div>
+                      <?php } ?>
+                </td> 
          </tbody>
                         <?php
                             }

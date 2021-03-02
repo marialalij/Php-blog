@@ -31,7 +31,7 @@ class BackController extends Controller
 
     public function administration()
     {
-        $articles = $this->articleManager->getArticles();
+        $articles = $this->articleManager->getalladministration();
         $users = $this->userManager->getUsers();
         $comments = $this->commentManager->getAllComments();
         return $this->view->render('administration', [
@@ -158,6 +158,41 @@ class BackController extends Controller
         $this->session->set('delete_user', 'L\'utilisateur a bien été supprimé');
         header('Location: ../public/index.php?route=administration');
     }
+
+
+     public function publishArticle($articleId)
+   {
+        $this->articleManager->publishArticle($articleId);
+         $this->session->set('article_publish', 'bien ajouter');
+         header('Location: ../public/index.php?route=administration');
+    }
+
+
+   public function pauseArticle($articleId)
+     {
+        $this->articleManager->pauseArticle($articleId);
+         $this->session->set('article_nopublish', 'non publier');
+        header('Location: ../public/index.php?route=administration');
+     }
+
+
+     public function publishComment($commentId)       
+     {
+           $this->commentManager->publishComment($commentId);
+           $this->session->set('comment_publish', 'bien ajouter');
+           header('Location: ../public/index.php?route=administration');
+      }
+  
+  
+     public function pauseComment($commentId)
+       {
+        
+          $this->commentManager->pauseComment($commentId);
+           $this->session->set('comment_nopublish', 'non publier');
+          header('Location: ../public/index.php?route=administration');
+       }
+
+
 
 
 }

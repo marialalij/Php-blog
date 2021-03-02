@@ -21,7 +21,7 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut consequuntur magnam, excepturi aliquid ex itaque esse est vero natus quae optio aperiam soluta voluptatibus corporis atque iste neque sit tempora!</p>
         
         <div class="clearfix">
-          <a class="btn btn-primary" href="../public/document/Cvmarialalij.pdf">Télecharger Mon Cv</a>
+          <a class="btn btn-primary" href="../public/document/Cvmarialalij.pdf" target="_blank">Télecharger Mon Cv</a>
         </div>
       </div>
     </div>
