@@ -68,6 +68,18 @@ class Router
                 elseif($route === 'updatePassword'){
                     $this->backController->updatePassword($this->request->getPost());
                 }
+                elseif($route === 'publishArticle'){
+                    $this->backController->publishArticle($articleId);
+                }
+                elseif($route === 'pauseArticle'){
+                    $this->backController->pauseArticle($articleId);
+                }
+                elseif($route === 'publishComment'){
+                    $this->backController->publishComment($this->request->getGet()->get('commentId'));
+                }
+                elseif($route === 'pauseComment'){
+                    $this->backController->pauseComment($this->request->getGet()->get('commentId'));
+                }
                 elseif($route === 'logout'){
                     $this->backController->logout();
                 }
