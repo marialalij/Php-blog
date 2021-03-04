@@ -1,5 +1,4 @@
 <?php
-
 const HOST = 'localhost';
 const CHARSET = 'utf8';
 const DB_NAME = 'blogphp';

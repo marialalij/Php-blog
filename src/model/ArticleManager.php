@@ -74,7 +74,7 @@ class ArticleManager extends Manager
    
     }
 
-    public function pauseArticle($articleId)
+    public function nopublishArticle($articleId)
     {
      $sql = 'UPDATE article SET article.status = 2 WHERE idarticle = ?';
     $this->createQuery($sql, [$articleId]);

@@ -66,7 +66,7 @@ public function publishComment($commentId)
 
 }
 
-public function pauseComment($commentId)
+public function nopublishComment($commentId)
 {
  $sql = 'UPDATE comment SET comment.status = 2 WHERE idcomment = ?';
  $this->createQuery($sql, [$commentId]);

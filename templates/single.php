@@ -14,7 +14,7 @@
 <br>
 
 <div class="post-preview">
-    <?php include('form_comment.php'); ?>
+    <?php include('form_comment.php'); ?> 
     <br>
     <h4>Commentaires</h4>
     <br>

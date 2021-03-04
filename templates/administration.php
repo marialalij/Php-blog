@@ -64,7 +64,7 @@
                       {
                         ?>
                     <div>
-                      <a href="../public/index.php?route=pauseArticle&articleId=<?= $article->getIdArticle() ?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
+                      <a href="../public/index.php?route=nopublishArticle&articleId=<?= $article->getIdArticle() ?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
                     </div>
                     <?php } ?>
                     <?php
@@ -167,7 +167,7 @@
                       {
                         ?>
                     <div>
-                      <a href="../public/index.php?route=pauseComment&commentId=<?= $comment->getIdComment() ;?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
+                      <a href="../public/index.php?route=nopublishComment&commentId=<?= $comment->getIdComment() ;?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
                     </div>
                     <?php } ?>
                     <?php
