@@ -1,24 +1,30 @@
 <?php
 
 namespace App\config;
-use App\src\controller\BackController;
+use App\src\controller\HomeController;
 use App\src\controller\ErrorController;
-use App\src\controller\FrontController;
+use App\src\controller\ArticleController;
+use App\src\controller\UserController;
+use App\src\controller\CommentController;
 use Exception;
 
 class Router
 {
-    private $frontController;
-    private $backController;
+    private $homeController;
     private $errorController;
     private $request;
+    private $articleController;
+    private $userController;
+    private $commentController;
 
     public function __construct()
     {
         $this->request = new Request();
-        $this->frontController = new FrontController();
-        $this->backController = new BackController();
+        $this->homeController = new HomeController();
         $this->errorController = new ErrorController();
+        $this->articleController = new ArticleController();
+        $this->commentController = new CommentController();
+        $this->userController = new UserController();
     }
 
     public function run()
@@ -30,74 +36,74 @@ class Router
             if(isset($route))
             {
                 if($route === 'article'){
-                    $this->frontController->article($this->request->getGet()->get('articleId'));
+                    $this->articleController->article($this->request->getGet()->get('articleId'));
                 }
                 elseif($route === 'about'){
-                    $this->frontController->about();
+                    $this->homeController->about();
                 }
                 elseif($route === 'admin'){
-                    $this->frontController->admin();
+                    $this->userController->admin();
                 }
                 elseif($route === 'addArticle'){
-                    $this->backController->addArticle($post);
+                    $this->articleController->addArticle($post);
                 }
                 elseif($route === 'editArticle'){
-                    $this->backController->editArticle($post, $articleId);
+                    $this->articleController->editArticle($post, $articleId);
                 }
                 elseif($route === 'deleteArticle'){
-                    $this->backController->deleteArticle($articleId);
+                    $this->articleController->deleteArticle($articleId);
                 }
                 elseif($route === 'addComment'){
-                    $this->frontController->addComment($post, $articleId);
+                    $this->commentController->addComment($post, $articleId);
                 }
                 elseif($route === 'deleteComment'){
-                    $this->backController->deleteComment($this->request->getGet()->get('commentId'));
+                    $this->commentController->deleteComment($this->request->getGet()->get('commentId'));
                 }
                 elseif($route === 'register'){
-                      $this->frontController->register($post);
+                      $this->userController->register($post);
                 }
                 elseif($route === 'contact'){
-                    $this->frontController->contact();
+                    $this->homeController->contact();
               }
                 elseif($route === 'login'){
-                    $this->frontController->login($post);
+                    $this->userController->login($post);
                 }
                 elseif($route === 'profile'){
-                    $this->backController->profile();
+                    $this->userController->profile();
                 }
                 elseif($route === 'updatePassword'){
-                    $this->backController->updatePassword($this->request->getPost());
+                    $this->userController->updatePassword($this->request->getPost());
                 }
                 elseif($route === 'publishArticle'){
-                    $this->backController->publishArticle($articleId);
+                    $this->articleController->publishArticle($articleId);
                 }
-                elseif($route === 'pauseArticle'){
-                    $this->backController->pauseArticle($articleId);
+                elseif($route === 'nopublishArticle'){
+                    $this->articleController->nopublishArticle($articleId);
                 }
                 elseif($route === 'publishComment'){
-                    $this->backController->publishComment($this->request->getGet()->get('commentId'));
+                    $this->commentController->publishComment($this->request->getGet()->get('commentId'));
                 }
-                elseif($route === 'pauseComment'){
-                    $this->backController->pauseComment($this->request->getGet()->get('commentId'));
+                elseif($route === 'nopublishComment'){
+                    $this->commentController->nopublishComment($this->request->getGet()->get('commentId'));
                 }
                 elseif($route === 'logout'){
-                    $this->backController->logout();
+                    $this->userController->logout();
                 }
                 elseif($route === 'deleteAccount'){
-                    $this->backController->deleteAccount();
+                    $this->userController->deleteAccount();
                 }
                 elseif($route === 'deleteUser'){
-                    $this->backController->deleteUser($this->request->getGet()->get('userId'));
+                    $this->userController->deleteUser($this->request->getGet()->get('userId'));
                 }
                 elseif($route === 'administration'){
-                    $this->backController->administration();
+                    $this->homeController->administration();
                 }
                 else{
                     $this->errorController->errorNotFound();
                 }
             }
             else{
-                $this->frontController->home();
+                $this->homeController->home();
             }
         }
         catch (Exception $e)
