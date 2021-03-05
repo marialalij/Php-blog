@@ -1,8 +1,12 @@
-<?php 
+<?php
+
 require '../vendor/autoload.php';
+require '../config/dev.php';
 
- $router = new App\Router(dirname(__DIR__) . '/view');
+$whoops = new \Whoops\Run;
+$whoops->pushHandler(new \Whoops\Handler\PrettyPageHandler);
+$whoops->register();
 
- $router
- ->get('template', '/frontend/template', 'blog')
- ->run();
+session_start();
+$router = new \App\config\Router();
+$router->run();

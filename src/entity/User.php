@@ -1,8 +1,7 @@
 <?php 
- namespace Entity;
-
- class user{
-
+namespace App\src\entity;
+ class User{
+     private $idUser;
      private $pseudo;
      private $email;
      private $password;
@@ -10,10 +9,17 @@
      private $lastName;
      private $mobile;
      private $birthDate;
-     private $image;
      private $role;
+     private $status;
 
    //setters
+ 
+
+   public function setIdUser($idUser)
+   {
+
+       $this->idUser = $idUser;
+   }
 
      public function setPseudo($pseudo)
      {
@@ -51,18 +57,29 @@
 		$this->birthDate = $birthDate;
 	}
 
-    public function setImage($image)
-	{
-		$this->image = $image;
-    }
     public function setRole($role)
 	{
 		$this->role = $role;
+    }
+
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
+
+    public function getStatus()
+    {
+        return $this->status;
     }
     
 
 
     //getters
+
+    public function getIdUser()
+	{
+		return $this->idUser;
+	}
 
     public function getPseudo()
 	{
@@ -97,11 +114,6 @@
     public function getBirthDate()
 	{
 		return $this->birthDate;
-	}
-
-	public function getImage()
-	{
-		return $this->image;
 	}
 
 	public function getRole()

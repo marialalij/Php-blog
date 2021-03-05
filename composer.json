@@ -1,8 +1,4 @@
-{   "autoload": {
-        "psr-4": {
-            "App\\":"src/"
-        }
-    },
+{
     "name": "youne/blogphp",
     "authors": [
         {
@@ -10,10 +6,21 @@
             "email": "marialalij@gmail.com"
         }
     ],
-   
     "require": {
         "twig/twig": "^3.2",
         "twbs/bootstrap": "^4.6",
-        "altorouter/altorouter": "1.2.0"
-    }
+        "filp/whoops": "^2.9"
+    },  
+
+    "autoload": {
+        "psr-4": {
+          "App\\config\\":"config/",
+          "App\\src\\": "src/",
+          "App\\src\\controller\\": "src/controller/",
+          "App\\src\\constraint\\": "src/constraint/",
+          "App\\src\\model\\": "src/model/",
+          "App\\src\\view\\": "src/view/"
+
+        }
+      }
 }
