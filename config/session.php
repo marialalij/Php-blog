@@ -54,13 +54,5 @@ class Session
         session_destroy();
     }
 
-    public function getUserInfo($name)
-    {
-        if (isset($_SESSION['user'])) {
-            if (isset($_SESSION['user'][$name])) {
-                return $_SESSION['user'][$name];
-            }
-        }
-    }
 
 }

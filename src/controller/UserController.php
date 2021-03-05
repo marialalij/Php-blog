@@ -6,6 +6,7 @@ use App\config\Parameter;
 
 class UserController extends Controller
 { 
+
  public function register(Parameter $post)
      {
         if($post->get('submit')) {
@@ -27,28 +28,6 @@ class UserController extends Controller
         return $this->view->render('register');
     }
 
-    private function checkLoggedIn()
-    {
-        if(!$this->session->get('pseudo')) {
-            $this->session->set('need_login', 'Vous devez vous connecter pour accéder à cette page');
-            header('Location: ../public/index.php?route=login');
-        } else {
-            return true;
-        }
-    }
-
-    private function checkAdmin()
-    {
-        $this->checkLoggedIn();
-        if(!($this->session->get('role') === 'admin')) {
-            $this->session->set('not_admin', 'Vous n\'avez pas le droit d\'accéder à cette page');
-            header('Location: ../public/index.php?route=profile');
-        } else {
-            return true;
-        }
-    }
-    
-
     public function login(Parameter $post)
     {
         if($post->get('submit')) {
@@ -60,14 +39,15 @@ class UserController extends Controller
                 $this->session->set('pseudo', $post->get('pseudo'));
                 header('Location: ../public/index.php');
             }
-            else {
                 $this->session->set('error_login', 'Le pseudo ou le mot de passe sont incorrects');
                 return $this->view->render('login', [
                     'post'=> $post
                 ]);
-            }
         }
         return $this->view->render('login');
     }
-
+    public function profile()
+    {
+        return $this->view->render('profile');
+    }
  }

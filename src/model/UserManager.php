@@ -8,9 +8,7 @@ use App\src\entity\User;
 
 class UserManager extends Manager
 
-{
-
-    
+{ 
     private function buildObject($row)
     {
         $user = new User();

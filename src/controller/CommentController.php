@@ -17,14 +17,13 @@ class CommentController extends Controller
                 $this->commentManager->addComment($post, $articleId);
                 $this->session->set('add_comment', 'Le commentaire à bien été ajouté');
                 header('Location: ../public/index.php?route=article&articleId=' . $articleId);
-            } else {
+            }
                 $this->view->render('single', [
                     'article' => $article,
                     'comments' => $comments,
                     'errors' => $errors,
                     'post' => $post
                 ]);
-            }
         } else {
             //Si aucun formulaire soumis, redirection vers home
             header('Location: ../public/index.php');

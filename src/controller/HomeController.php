@@ -1,6 +1,5 @@
 <?php
 namespace App\src\controller;
-
 use App\config\Parameter;
 
 
@@ -36,4 +35,5 @@ class HomeController extends Controller
     {
         return $this->view->render('contact_me');
     }
+    
 }
