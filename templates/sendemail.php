@@ -1,8 +1,7 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
-use App\config\Parameter;
 
-require_once '../phpmailer/Exception.php';
+
 require_once '../phpmailer/PHPMailer.php';
 require_once '../phpmailer/SMTP.php';
 
@@ -15,7 +14,6 @@ if(isset($_POST['submit'])){
   $email = $_POST['email'];
   $message = $_POST['message'];
 
-  try{
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
@@ -35,10 +33,6 @@ if(isset($_POST['submit'])){
     $alert = '<div class="alert-success">
                  <span>Message Sent! Thank you for contacting us.</span>
                 </div>';
-  } catch (Exception $e){
-    $alert = '<div class="alert-error">
-                <span>'.$e->getMessage().'</span>
-              </div>';
-  }
 }
+
 ?>
