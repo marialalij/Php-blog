@@ -64,7 +64,7 @@ class Router
                 }
                 elseif($route === 'contact'){
                     $this->homeController->contact();
-              }
+                }
                 elseif($route === 'login'){
                     $this->userController->login($post);
                 }
