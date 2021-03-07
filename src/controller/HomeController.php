@@ -5,7 +5,10 @@ use App\config\Parameter;
 
 class HomeController extends Controller
 {  
-
+ 
+/**
+* Administration area
+*/
     public function administration()
     {
         $articles = $this->articleManager->getalladministration();
@@ -22,7 +25,7 @@ class HomeController extends Controller
     {
         return $this->view->render('about_me');
     }
-
+//profil about me
     public function about()
     {
         $articles = $this->articleManager->getArticles();
@@ -31,6 +34,7 @@ class HomeController extends Controller
         ]);
     }
     
+    //contat
     public function contact()
     {
         return $this->view->render('contact_me');
