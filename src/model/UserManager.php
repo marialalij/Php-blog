@@ -1,13 +1,12 @@
 <?php
-
 namespace App\src\model;
-
 use App\config\Parameter;
 use App\src\entity\User;
 
-
 class UserManager extends Manager
-
+/**
+ * Class UserManager manages database access for user accounts
+ */
 { 
     private function buildObject($row)
     {
@@ -18,7 +17,7 @@ class UserManager extends Manager
         return $user;
     }
   
-  
+  //display all users
     public function getUsers()
     {
         $sql = 'SELECT user.iduser, user.pseudo, role.role FROM user INNER JOIN role ON role.idrole = user.role_idrole ORDER BY user.role_idrole DESC';
@@ -32,6 +31,11 @@ class UserManager extends Manager
         return $users;
     }
 
+   
+/**
+* Register user in database, password hashed
+* @param Parameter $post User data
+*/
 
     public function register(Parameter $post)
     {
@@ -39,6 +43,11 @@ class UserManager extends Manager
         $this->createQuery($sql, [$post->get('pseudo'), $post->get('email'), $post->get('first_name'), $post->get('last_name'), password_hash($post->get('password'), PASSWORD_BCRYPT),2]);
     }
 
+    
+/**
+* Check if there is not already an account for this user
+*@param Parameter $post User data
+*/
 
     public function checkUser(Parameter $post)
     {
@@ -51,6 +60,11 @@ class UserManager extends Manager
     }
    
     
+/**
+* Verification of login data for a user
+* @param Parameter $post Connection data
+* @return array
+*/
     public function login(Parameter $post)
     {
         $sql = 'SELECT user.iduser, user.role_idrole, user.password, role.role FROM user INNER JOIN role ON role.idrole = user.role_idrole WHERE pseudo = ?';
@@ -64,7 +78,10 @@ class UserManager extends Manager
         ];
     }
 
-
+    /**
+    * Update userProfile password in database
+    * @param Parameter $post New password
+    */
 
     public function updatePassword(Parameter $post, $pseudo)
     {
@@ -72,7 +89,9 @@ class UserManager extends Manager
         $this->createQuery($sql, [password_hash($post->get('password'), PASSWORD_BCRYPT), $pseudo]);
     }
 
-
+    /**
+    * Deletion of an account in the database
+    */
     public function deleteAccount($pseudo)
     {
         $sql = 'DELETE FROM user WHERE pseudo = ?';
@@ -80,7 +99,8 @@ class UserManager extends Manager
     }
 
 
-
+  // Deletion of user
+    
     public function deleteUser($userId)
     {
         $sql = 'DELETE FROM user WHERE iduser = ?';

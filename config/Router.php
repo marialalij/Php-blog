@@ -89,9 +89,6 @@ class Router
                 elseif($route === 'logout'){
                     $this->userController->logout();
                 }
-                elseif($route === 'deleteAccount'){
-                    $this->userController->deleteAccount();
-                }
                 elseif($route === 'deleteUser'){
                     $this->userController->deleteUser($this->request->getGet()->get('userId'));
                 }

@@ -1,16 +1,21 @@
 <?php
 namespace App\src\controller;
 use App\config\Parameter;
-
-
 class CommentController extends Controller
 {
- public function addComment(Parameter $post, $articleId)
+    
+/**
+* If add comment data received and data validated, insertion in DB
+* If not
+* @param Parameter $post
+* @param $articleId
+*/
+   public function addComment(Parameter $post, $articleId)
     {
         $article = $this->articleManager->getArticle($articleId);
         $comments = $this->commentManager->getComments($articleId);
-
-        //Si formulaire POST soumis, on insère le commentaire si les données sont valides
+        
+// If POST form submitted, we insert the comment if the data is valid
         if ($post->get('submit')) {
             $errors = $this->validation->validate($post, 'Comment');
             if (!$errors) {
@@ -24,9 +29,10 @@ class CommentController extends Controller
                     'errors' => $errors,
                     'post' => $post
                 ]);
-        } 
-            //Si aucun formulaire soumis, redirection vers home
+        }
+          // If no form submitted, redirect to home    
             header('Location: ../public/index.php');
+     
     }
 
     public function publishComment($commentId)       
@@ -46,6 +52,10 @@ class CommentController extends Controller
       }
 
       
+/**
+* Deletion of a comment in the database
+* @param $commentId mixed Identifier of the comment to delete
+*/
 
     public function deleteComment($commentId)
     {
@@ -53,10 +63,4 @@ class CommentController extends Controller
         $this->session->set('delete_comment', 'Le commentaire a bien été supprimé');
         header('Location: ../public/index.php?route=administration');
     }
-
-
-
-
-
-
 }
