@@ -4,7 +4,7 @@
 <?= $this->session->show('update_password'); ?>
 <div>
     <h2><?= $this->session->get('pseudo'); ?></h2>
-    <p><?= $this->session->get('id'); ?></p>
+    <p><?= $this->session->get('iduser'); ?></p>
     <a href="../public/index.php?route=updatePassword">Modifier son mot de passe</a>
     <a href="../public/index.php?route=deleteAccount">Supprimer mon compte</a>
 </div>
