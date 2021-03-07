@@ -24,10 +24,9 @@ class CommentController extends Controller
                     'errors' => $errors,
                     'post' => $post
                 ]);
-        } else {
+        } 
             //Si aucun formulaire soumis, redirection vers home
             header('Location: ../public/index.php');
-        }
     }
 
     public function publishComment($commentId)       

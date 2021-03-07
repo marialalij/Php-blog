@@ -85,11 +85,12 @@ class ArticleManager extends Manager
 
     public function editArticle(Parameter $post, $articleId)
     {
-        $sql = 'UPDATE article SET title=:title, chapo=:chapo, content=:content WHERE idarticle=:articleId';
+        $sql = 'UPDATE article SET title=:title, chapo=:chapo, content=:content, author=:author WHERE idarticle=:articleId';
         $this->createQuery($sql, [
             'title' => $post->get('title'),
             'chapo' => $post->get('chapo'),
             'content' => $post->get('content'),
+            'author' => $post->get('author'),
             'articleId' => $articleId
         ]);
     }

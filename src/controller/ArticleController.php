@@ -27,13 +27,12 @@ class ArticleController extends Controller
                         'errors' => $errors
                     ]);
                 
-            } else {
-                //Si aucune données POST, création d'un article
-                $this->view->render('add_article');
             }
         }
+                //Si aucune données POST, création d'un article
+                $this->view->render('add_article');     
     }
-
+  
 
     public function editArticle(Parameter $post, $articleId)
     {
@@ -43,7 +42,7 @@ class ArticleController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post, 'Article');
                 if (!$errors) {
-                    $this->articleManager->editArticle($post, $articleId, $this->session->getUserInfo('idarticle'));
+                    $this->articleManager->editArticle($post, $articleId, $this->session->get('idarticle'));
                     $this->session->set('edit_article', 'L\'article à bien été mis à jour');
                     header('Location: ../public/index.php?route=administration');
                 } else {
