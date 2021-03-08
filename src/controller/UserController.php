@@ -22,7 +22,7 @@ class UserController extends Controller
             if(!$errors) {
                 $this->userManager->register($post);
                 $this->session->set('register', 'Votre inscription a bien été effectuée');
-                header('Location: ../public/index.php');
+                header('Location: ../public/index.php?route=login');
             }
             return $this->view->render('register', [
                 'post' => $post,

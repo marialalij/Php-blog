@@ -1,5 +1,6 @@
 <?php $this->title = "Connexion"; ?>
 <?= $this->session->show('error_login'); ?>   
+<?= $this->session->show('register'); ?>  
 <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">

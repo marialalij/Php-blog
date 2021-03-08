@@ -69,7 +69,7 @@ class ArticleValidation extends Validation
             return $this->constraint->minLength('chapo', $value, 2);
         }
         if($this->constraint->maxLength($name, $value, 500)) {
-            return $this->constraint->maxLength('chapo', $value, 255);
+            return $this->constraint->maxLength('chapo', $value, 500);
         }
     }
 
@@ -80,6 +80,9 @@ class ArticleValidation extends Validation
         }
         if($this->constraint->minLength($name, $value, 500)) {
             return $this->constraint->minLength('content', $value, 2);
+        }
+        if($this->constraint->maxLength($name, $value, 2000)) {
+            return $this->constraint->maxLength('chapo', $value,2000);
         }
     }
 

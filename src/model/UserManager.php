@@ -57,9 +57,7 @@ class UserManager extends Manager
         if($isUnique) {
             return '<p>Le pseudo existe déjà</p>';
         }
-    }
-   
-    
+    }   
 /**
 * Verification of login data for a user
 * @param Parameter $post Connection data

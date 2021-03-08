@@ -48,13 +48,13 @@ class Router
                     $this->articleController->addArticle($post);
                 }
                 elseif($route === 'editArticle'){
-                    $this->articleController->editArticle($post, $articleId);
+                    $this->articleController->editArticle($this->request->getPost(), $this->request->getGet()->get('articleId'));
                 }
                 elseif($route === 'deleteArticle'){
                     $this->articleController->deleteArticle($articleId);
                 }
                 elseif($route === 'addComment'){
-                    $this->commentController->addComment($post, $articleId);
+                    $this->articleController->addComment($post, $articleId);
                 }
                 elseif($route === 'deleteComment'){
                     $this->commentController->deleteComment($this->request->getGet()->get('commentId'));
@@ -70,9 +70,6 @@ class Router
                 }
                 elseif($route === 'profile'){
                     $this->userController->profile();
-                }
-                elseif($route === 'updatePassword'){
-                    $this->userController->updatePassword($this->request->getPost());
                 }
                 elseif($route === 'publishArticle'){
                     $this->articleController->publishArticle($articleId);

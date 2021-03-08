@@ -1,4 +1,5 @@
 <?php $this->_title = 'liste des posts'; ?>
+<?= $this->session->show('add_comment'); ?>
   <?php
     foreach ($articles as $article)
     {
