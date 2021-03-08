@@ -42,7 +42,7 @@ private function buildObject($row)
 
     public function addComment(Parameter $post, $articleId)
     {
-        $sql = 'INSERT INTO comment (content, comment_date, article_idarticle, comment.status) VALUES (?, NOW(), ?,2)';
+        $sql = 'INSERT INTO comment (content, comment_date, article_idarticle, comment.status) VALUES (?, NOW(), ?, 2)';
         $this->createQuery($sql, [$post->get('content'), $articleId]);
     }
 
