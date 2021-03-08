@@ -96,7 +96,6 @@ class UserManager extends Manager
         $this->createQuery($sql, [$pseudo]);
     }
 
-
   // Deletion of user
     
     public function deleteUser($userId)

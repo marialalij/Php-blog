@@ -41,9 +41,6 @@ class Router
                 elseif($route === 'about'){
                     $this->homeController->about();
                 }
-                elseif($route === 'admin'){
-                    $this->userController->admin();
-                }
                 elseif($route === 'addArticle'){
                     $this->articleController->addArticle($post);
                 }

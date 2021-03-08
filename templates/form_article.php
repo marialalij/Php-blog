@@ -31,15 +31,15 @@ $submit = $route === 'addArticle' ? 'Envoyer' : 'Mettre à jour';
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
              <label for="content">content</label><br>
-             <textarea id="content" name="content" rows="10" class="form-control" placeholder="Content" required data-validation-required-message="Please enter a message.">
-             <?= isset($post) ? htmlspecialchars($post->get('content')): ''; ?></textarea><br>
+             <textarea id="content" name="content" rows="10" class="form-control" placeholder="Content" required data-validation-required-message="Please enter a message."></textarea>
+             <?= isset($post) ? htmlspecialchars($post->get('content')): ''; ?><br>
              <?= isset($errors['content']) ? $errors['content'] : ''; ?>
             </div>
           </div>
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">    
              <label for="author">author</label><br>
-             <input type="text" id="author" name="author" class="form-control" placeholder="author"  required data-validation-required-message="Please enter your chapo."
+             <input type="text" id="author" name="author" class="form-control" placeholder="author"  required data-validation-required-message="Please enter your author."
              value="<?= isset($post) ? htmlspecialchars($post->get('author')): ''; ?>"><br>
              <?= isset($errors['author']) ? $errors['author'] : ''; ?>
             <p class="help-block text-danger"></p>
