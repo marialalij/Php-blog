@@ -4,36 +4,6 @@ use App\config\Parameter;
 class CommentController extends Controller
 {
     
-/**
-* If add comment data received and data validated, insertion in DB
-* If not
-* @param Parameter $post
-* @param $articleId
-*/
-   public function addComment(Parameter $post, $articleId)
-    {
-        $article = $this->articleManager->getArticle($articleId);
-        $comments = $this->commentManager->getComments($articleId);
-        
-// If POST form submitted, we insert the comment if the data is valid
-        if ($post->get('submit')) {
-            $errors = $this->validation->validate($post, 'Comment');
-            if (!$errors) {
-                $this->commentManager->addComment($post, $articleId);
-                $this->session->set('add_comment', 'Le commentaire à bien été ajouté');
-                header('Location: ../public/index.php?route=article&articleId=' . $articleId);
-            }
-                $this->view->render('single', [
-                    'article' => $article,
-                    'comments' => $comments,
-                    'errors' => $errors,
-                    'post' => $post
-                ]);
-        }
-          // If no form submitted, redirect to home    
-            header('Location: ../public/index.php');
-     
-    }
 
     public function publishComment($commentId)       
     {

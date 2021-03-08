@@ -2,7 +2,7 @@
  namespace App\src\entity;
 
  class Article{
-     
+          
      private $idArticle;
      private $title;
      private $chapo;

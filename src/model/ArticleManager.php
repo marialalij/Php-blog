@@ -32,7 +32,7 @@ class ArticleManager extends Manager
 */
     public function getArticles()
     {
-        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date, article.status FROM article INNER JOIN user ON article.user_iduser = user.iduser and article.status =1  ORDER BY article.idarticle DESC';
+        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date, article.status FROM article INNER JOIN user ON article.user_iduser = user.iduser and article.status =1  ORDER BY article.update_date DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -46,7 +46,7 @@ class ArticleManager extends Manager
     //display all articles
     public function getalladministration()
     {
-        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date, article.status FROM article INNER JOIN user ON article.user_iduser = user.iduser ORDER BY article.idarticle DESC';
+        $sql = 'SELECT article.idarticle, article.title, article.chapo, article.content, user.pseudo, article.update_date, article.status FROM article INNER JOIN user ON article.user_iduser = user.iduser ORDER BY article.update_date DESC';
         $result = $this->createQuery($sql);
         $articles = [];
         foreach ($result as $row){
@@ -80,7 +80,7 @@ class ArticleManager extends Manager
     public function addArticle(Parameter $post)
     {
         $sql = 'INSERT INTO article (title, chapo, content, update_date, author, user_iduser, article.status)
-         VALUES (?, ?, ?, NOW(),?,?,1)';
+         VALUES (?, ?, ?, NOW(),?,?,2)';
         $this->createQuery($sql, [$post->get('title'), $post->get('chapo'), 
         $post->get('content'), $post->get('author'), $_SESSION['iduser'] ]);
     }
@@ -99,20 +99,18 @@ class ArticleManager extends Manager
      $this->createQuery($sql, [$articleId]);  
     }
 
-    
 /**
 * Update of an article in the database with the data received
 * @param Parameter $post Data updated
 */
     public function editArticle(Parameter $post, $articleId)
     {
-        $sql = 'UPDATE article SET title=:title, chapo=:chapo, content=:content, author=:author WHERE idarticle=:articleId';
+        $sql = 'UPDATE article SET title=:title, chapo=:chapo, content=:content, update_date = NOW() WHERE idarticle=:articleId';
         $this->createQuery($sql, [
             'title' => $post->get('title'),
             'chapo' => $post->get('chapo'),
             'content' => $post->get('content'),
-            'author' => $post->get('author'),
-            'articleId' => $articleId
+            'articleId' => $articleId,
         ]);
     }
    

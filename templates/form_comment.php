@@ -1,4 +1,3 @@
-
 <?php
 $route = isset($post) && $post->get('idarticle') ? 'editComment' : 'addComment';
 $submit = $route === 'addComment' ? 'Ajouter' : 'Mettre à jour';

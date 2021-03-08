@@ -41,10 +41,10 @@ class ArticleController extends Controller
     public function editArticle(Parameter $post, $articleId)
     {
             $article = $this->articleManager->getArticle($articleId);
-
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post,'Article');
                 if (!$errors) {
+                    var_dump($this->session);
                     $this->articleManager->editArticle($post, $articleId, $this->session->get('idarticle'));
                     $this->session->set('edit_article', 'L\'article à bien été mis à jour');
                     header('Location: ../public/index.php?route=administration');
@@ -58,8 +58,8 @@ class ArticleController extends Controller
                 $post->set('idarticle', $article->getIdArticle());
                 $post->set('title', $article->getTitle());
                 $post->set('chapo', $article->getChapo());
-                $post->set('content', $article->getContent());  
-                $post->set('author', $article->getAuthor());      
+                $post->set('content', $article->getContent()); 
+                $post->set('author', $article->getAuthor());     
                 $this->view->render('edit_article', [
                     'post' => $post
                 ]);
@@ -106,5 +106,35 @@ class ArticleController extends Controller
           ]);
 
        }
+       /**
+* If add comment data received and data validated, insertion in DB
+* If not
+* @param Parameter $post
+* @param $articleId
+*/
+   public function addComment(Parameter $post, $articleId)
+   {
+       $article = $this->articleManager->getArticle($articleId);
+       $comments = $this->commentManager->getComments($articleId);
+       
+// If POST form submitted, we insert the comment if the data is valid
+       if ($post->get('submit')) {
+           $errors = $this->validation->validate($post, 'Comment');
+           if (!$errors) {
+               $this->commentManager->addComment($post, $articleId);
+               $this->session->set('add_comment', 'Votre commentaire a bien été envoyé, et est en attente de validation');
+               header('Location: ../public/index.php?route=article&articleId=' . $articleId);
+           }
+               $this->view->render('single', [
+                   'article' => $article,
+                   'comments' => $comments,
+                   'errors' => $errors,
+                   'post' => $post
+               ]);
+       }
+         // If no form submitted, redirect to home    
+           header('Location: ../public/index.php');
+    
+   }
 
 }

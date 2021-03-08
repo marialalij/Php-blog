@@ -8,7 +8,6 @@
         </div>
       </div>
 </div>
-
 <div class="container">
   <div class="row">
     <div class="col-lg-8 col-md-10 mx-auto">
@@ -26,7 +25,7 @@
               <label for="email">Email</label><br>
               <input type="text" id="email" name="email" class="form-control" placeholder="email"  required data-validation-required-message="Please enter your email."
                value="<?= isset($post) ? htmlspecialchars($post->get('email'), ENT_QUOTES): ''; ?>"><br>
-              <?= isset($errors['pseudo']) ? $errors['pseudo'] : ''; ?>
+              <?= isset($errors['email']) ? $errors['email'] : ''; ?>
             </div>
           </div>
           <div class="control-group">
@@ -52,7 +51,7 @@
                <?= isset($errors['password']) ? $errors['password'] : ''; ?>
             </div>
           </div>
-          <input type="submit" value="Inscription" i class="btn btn-primary" id="submit" name="submit">     
+          <input type="submit" value="Inscription" i class="btn btn-primary" id="submit" name="submit">  
         </form> 
     </div>
   </div>

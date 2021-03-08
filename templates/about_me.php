@@ -1,3 +1,4 @@
+<?= $this->session->show('add_comment'); ?>
   <?php $this->_title = 'a Propos de moi'; ?>
   <div class="container">
       <div class="row">
