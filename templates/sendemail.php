@@ -22,11 +22,11 @@ if(isset($_POST['submit'])){
     $mail->setFrom('marialalij@gmail.com'); 
     $mail->addAddress('marialalij@gmail.com');
     $mail->isHTML(true);
-    $mail->Subject = 'Message Received (Contact Page)';
+    $mail->Subject = 'Message recu (Contact Page)';
     $mail->Body = "<h3>Name : $name <br>Email: $email <br>Message : $message</h3>";
     $mail->send();
     $alert = '<div class="alert-success">
-                 <span>Message Sent! Thank you for contacting us.</span>
+                 <span>Message envoyé! Merci de nous contacter.</span>
                 </div>';
 }
 

@@ -82,7 +82,7 @@ class ArticleManager extends Manager
         $sql = 'INSERT INTO article (title, chapo, content, update_date, author, user_iduser, article.status)
          VALUES (?, ?, ?, NOW(),?,?,2)';
         $this->createQuery($sql, [$post->get('title'), $post->get('chapo'), 
-        $post->get('content'), $post->get('author'), $_SESSION['iduser'] ]);
+        $post->get('content'), $post->get('author'), $_SESSION['iduser']]);
     }
 
 //publish Article for admin
