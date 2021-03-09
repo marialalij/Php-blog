@@ -38,8 +38,8 @@ class Router
                 if($route === 'article'){
                     $this->articleController->article($this->request->getGet()->get('articleId'));
                 }
-                elseif($route === 'about'){
-                    $this->homeController->about();
+                elseif($route === 'blog'){
+                    $this->homeController->blog();
                 }
                 elseif($route === 'addArticle'){
                     $this->articleController->addArticle($post);

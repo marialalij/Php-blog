@@ -15,18 +15,18 @@ if(isset($_POST['submit'])){
     $mail->isSMTP();
     $mail->Host = 'smtp.gmail.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'marialalij@gmail.com'; //your address
-    $mail->Password = 'Gmhjr@1190'; //your password
+    $mail->Username = 'marialalij@gmail.com'; //your adress
+    $mail->Password = 'Gmhjr@1190'; 
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = '587';
     $mail->setFrom('marialalij@gmail.com'); 
     $mail->addAddress('marialalij@gmail.com');
     $mail->isHTML(true);
-    $mail->Subject = 'Message Received (Contact Page)';
+    $mail->Subject = 'Message recu (Contact Page)';
     $mail->Body = "<h3>Name : $name <br>Email: $email <br>Message : $message</h3>";
     $mail->send();
     $alert = '<div class="alert-success">
-                 <span>Message Sent! Thank you for contacting us.</span>
+                 <span>Message envoyé! Merci de nous contacter.</span>
                 </div>';
 }
 

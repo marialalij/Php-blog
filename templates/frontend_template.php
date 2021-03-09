@@ -40,7 +40,7 @@ use App\config\Parameter;
                <a class="nav-link"  href="../../../public/index.php">a propos de moi</a>
                </li>
                <li class="nav-item">
-               <a class="nav-link" href="../../../public/index.php?route=about">blog</a>
+               <a class="nav-link" href="../../../public/index.php?route=blog">blog</a>
                </li>
                <li class="nav-item">
                <a class="nav-link" href="../../../public/index.php?route=contact" href="contact.html">Contactez-Moi</a>

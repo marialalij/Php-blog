@@ -26,7 +26,7 @@ class HomeController extends Controller
         return $this->view->render('about_me');
     }
 //profil about me
-    public function about()
+    public function blog()
     {
         $articles = $this->articleManager->getArticles();
         return $this->view->render('blog', [

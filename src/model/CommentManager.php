@@ -25,7 +25,7 @@ private function buildObject($row)
 
     public function getComments($articleId)
     {
-        $sql = 'SELECT idcomment, content, comment_date, status FROM comment WHERE article_idarticle= ? and comment.status = 1 ORDER BY comment_date DESC';
+        $sql = 'SELECT idcomment, content, comment_date, status FROM comment WHERE article_idarticle= ? and comment.status = 1  ORDER BY comment_date DESC';
         $result = $this->createQuery($sql, [$articleId]);
         $comments = [];
         foreach ($result as $row) {
@@ -42,8 +42,8 @@ private function buildObject($row)
 
     public function addComment(Parameter $post, $articleId)
     {
-        $sql = 'INSERT INTO comment (content, comment_date, article_idarticle, comment.status) VALUES (?, NOW(), ?, 2)';
-        $this->createQuery($sql, [$post->get('content'), $articleId]);
+        $sql = 'INSERT INTO comment (content, comment_date, user_iduser, article_idarticle, comment.status) VALUES (?, NOW(), ?, ?, 2)';
+        $this->createQuery($sql, [$post->get('content'), $_SESSION['iduser'], $articleId]);
     }
 
 
@@ -73,17 +73,17 @@ private function buildObject($row)
         return $comments;    
 }
 //publish comment
-public function publishComment($commentId)
-{
-   $sql = 'UPDATE comment SET comment.status = 1 WHERE idcomment = ?';
-   $this->createQuery($sql,[$commentId]);
+     public function publishComment($commentId)
+    {
+      $sql = 'UPDATE comment SET comment.status = 1 WHERE idcomment = ?';
+      $this->createQuery($sql,[$commentId]);
 
-}
+    }
 //np publish comment
-public function nopublishComment($commentId)
-{
- $sql = 'UPDATE comment SET comment.status = 2 WHERE idcomment = ?';
- $this->createQuery($sql, [$commentId]); 
-}
+    public function nopublishComment($commentId)
+    {
+     $sql = 'UPDATE comment SET comment.status = 2 WHERE idcomment = ?';
+     $this->createQuery($sql, [$commentId]); 
+    }
 
 }
