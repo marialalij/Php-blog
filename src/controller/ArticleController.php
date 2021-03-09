@@ -19,7 +19,7 @@ class ArticleController extends Controller
                 if (!$errors) {
                     $this->articleManager->addArticle($post);
                     $this->session->set('add_article', 'Le nouvel article à bien été ajouté');
-                    header('Location: ../public/index.php?route=about');
+                    header('Location: ../public/index.php?route=blog');
                 }
                     $this->view->render('add_article', [
                         'post' => $post,

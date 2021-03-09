@@ -54,7 +54,7 @@
                             {
                           ?>
                            <div>
-                              <a href="../public/index.php?route=nopublishArticle&articleId=<?=htmlspecialchars ($article->getIdArticle(), ENT_QUOTES); ?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
+                              <a href="../public/index.php?route=nopublishArticle&articleId=<?=htmlspecialchars ($article->getIdArticle(), ENT_QUOTES); ?>"> <input type="button" class="btn btn-primary" value="Mettre en attente"> </a>
                            </div>
                           <?php 
                             } 
@@ -64,7 +64,7 @@
                             {
                           ?>
                            <div>
-                              <a href="../public/index.php?route=publishArticle&articleId=<?=htmlspecialchars ($article->getIdArticle(), ENT_QUOTES); ?>"> <input type="button" class="btn btn-primary btn-lg" value="Publier"> </a>
+                              <a href="../public/index.php?route=publishArticle&articleId=<?=htmlspecialchars ($article->getIdArticle(), ENT_QUOTES); ?>"> <input type="button" class="btn btn-primary" value="Publier"> </a>
                            </div>
                           <?php
                             } 
@@ -154,7 +154,7 @@
                       {
                   ?>
                      <div>
-                       <a href="../public/index.php?route=nopublishComment&commentId=<?=htmlspecialchars($comment->getIdComment(),ENT_QUOTES);?>"> <input type="button" class="btn btn-primary btn-lg" value="Mettre en attente"> </a>
+                       <a href="../public/index.php?route=nopublishComment&commentId=<?=htmlspecialchars($comment->getIdComment(),ENT_QUOTES);?>"> <input type="button" class="btn btn-primary" value="Mettre en attente"> </a>
                      </div>
                      <?php
                       } 
@@ -164,7 +164,7 @@
                        {
                      ?>
                       <div>
-                        <a href="../public/index.php?route=publishComment&commentId=<?=htmlspecialchars($comment->getIdComment(),ENT_QUOTES);?>"> <input type="button" class="btn btn-primary btn-lg" value="Publier"> </a>
+                        <a href="../public/index.php?route=publishComment&commentId=<?=htmlspecialchars($comment->getIdComment(),ENT_QUOTES);?>"> <input type="button" class="btn btn-primary" value="Publier"> </a>
                       </div>
                       <?php 
                         }
