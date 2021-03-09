@@ -31,9 +31,10 @@ $submit = $route === 'addArticle' ? 'Envoyer' : 'Mettre à jour';
           <div class="control-group">
             <div class="form-group floating-label-form-group controls">
              <label for="content">content</label><br>
-             <textarea id="content" name="content" rows="10" class="form-control" placeholder="Content" required data-validation-required-message="Please enter a message."></textarea>
+             <textarea id="content" name="content" rows="10" class="form-control" placeholder="Content" required data-validation-required-message="Please enter a message.">
              <?= isset($post) ? htmlspecialchars($post->get('content')): ''; ?><br>
              <?= isset($errors['content']) ? $errors['content'] : ''; ?>
+             </textarea>
             </div>
           </div>
           <div class="control-group">
