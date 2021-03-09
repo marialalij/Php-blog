@@ -1,16 +1,14 @@
 /*************************/
 /******* Global **********/
 /*************************/
-
-
 /********* TEXT **********/
 
 body {
-    font-family: 'Nunito';
+    font-family:'Nunito';
     letter-spacing: 0.05em;
-  }
+}
 
-  .imgprofil{
+  .imgprofil {
       border-radius: 50%;
       max-width: 60%;
-  }
+}
