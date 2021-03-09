@@ -44,7 +44,6 @@ class ArticleController extends Controller
             if ($post->get('submit')) {
                 $errors = $this->validation->validate($post,'Article');
                 if (!$errors) {
-                    var_dump($this->session);
                     $this->articleManager->editArticle($post, $articleId, $this->session->get('idarticle'));
                     $this->session->set('edit_article', 'L\'article à bien été mis à jour');
                     header('Location: ../public/index.php?route=administration');
