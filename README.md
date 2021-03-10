@@ -10,3 +10,5 @@ Installation
 
 et pour composer taper la commande "composer install"
 
+L'analyse du code sur codacy https://app.codacy.com/gh/marialalij/php-blog/dashboard
+
